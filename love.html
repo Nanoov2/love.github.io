@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sıla 💖</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    h1, h2 {
+      color: white;
+      text-align: center;
+      text-shadow: 0 0 15px rgba(255, 100, 150, 0.8);
+      margin: 10px;
+      opacity: 0;
+      animation: fadeIn 3s ease forwards;
+    }
+
+    h1 { font-size: 3em; animation-delay: 0.5s; }
+    h2 { font-size: 2em; animation-delay: 2s; }
+
+    @keyframes fadeIn {
+      to { opacity: 1; transform: scale(1.05); }
+    }
+
+    .heart {
+      position: absolute;
+      bottom: 0;
+      width: 20px;
+      height: 20px;
+      background: rgba(255, 0, 102, 0.8);
+      transform: rotate(45deg);
+      animation: floatUp 6s linear infinite;
+      border-radius: 5px;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: rgba(255, 0, 102, 0.8);
+      border-radius: 50%;
+    }
+
+    .heart::before { top: -10px; left: 0; }
+    .heart::after { left: -10px; top: 0; }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0) rotate(45deg); opacity: 1; }
+      100% { transform: translateY(-100vh) rotate(45deg); opacity: 0; }
+    }
+
+    audio {
+      display: none; /* görünmez */
+    }
+  </style>
+</head>
+<body>
+  <h1>Sıla 💖</h1>
+  <h2>Sana sahip olduğum için çok şanslıyım 💞 Yüzün hiç düşmesin ufaklık</h2>
+
+<button id="playBtn" style="font-size:1.5em; padding:10px 20px; margin-top:20px;">
+  Müziği Başlat 💖
+</button>
+
+<audio id="audio" loop>
+  <source src="sıla.mp3" type="audio/mp3">
+</audio>
+
+<script>
+  const btn = document.getElementById("playBtn");
+  const audio = document.getElementById("audio");
+
+  btn.addEventListener("click", () => {
+    audio.play();
+    btn.style.display = "none"; // Butonu gizle
+  });
+</script>
+
+
+  <script>
+    // Kalplerin uçuşması
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (3 + Math.random() * 3) + "s";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 6000);
+    }
+    setInterval(createHeart, 400);
+  </script>
+</body>
+</html>
